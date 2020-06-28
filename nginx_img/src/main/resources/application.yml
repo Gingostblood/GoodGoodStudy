@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/exingImg?serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: update
+  thymeleaf:
+    prefix: classpath:/templates/pages/
+    suffix: .html
+    cache: false
+

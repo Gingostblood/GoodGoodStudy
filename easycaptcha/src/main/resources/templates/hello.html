@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input id="uuid" type="hidden">
+请输入用户名<input type="text" id="username">
+请输入密码<input type="text" id="password">
+请输入验证码<input type="text" id="in">
+<img id="yzm" width="130px" height="48px"/><br>
+<input type="button" id="ok" value="测试">
+</body>
+<script src="JQ/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $.get("/captcha", function (res) {
+        console.log(res)
+        $("#yzm").attr("src", res.img);
+        $("#uuid").val(res.uuid);
+    })
+
+    $("#ok").click(function () {
+        $.ajax({
+            url:'/login',
+            async:false,
+            data:{
+                username:$("#username").val(),
+                password:$("#password").val(),
+                uuid: $("#uuid").val(),
+                code: $("#in").val(),
+            },
+            success:function (res) {
+                if(res.code==0){
+                    alert("OK")
+                }else{
+                    alert(res.msg);
+                }
+            }
+        })
+    })
+</script>
+</html>

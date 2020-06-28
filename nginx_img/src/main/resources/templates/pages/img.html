@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <form enctype="multipart/form-data" action="/upload" method="post">
+        选择图片:<input type="file" name="uploadFile">
+        <br>
+        <input type="submit" value="提交">
+    </form>
+</div>
+<div id="loadImg"></div>
+
+<hr>
+<div>
+    <form>
+        选择图片:<input type="file" name="uploadFile" id="uploadFile">
+        <input type="button" id="sure" value="提交">
+    </form>
+    <div id="showImg"></div>
+</div>
+</body>
+<script src="jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#sure").on("click", upload);
+    })
+
+    function upload() {
+        var formData = new FormData();
+        //.append函数第一个参数为key,第二个参数为value，key要和Controller中的参数名一致
+        //$("")[0]是将jq对象转化为js对象，然后调用js对象的.files[0]函数。
+        formData.append("uploadFile", $("#uploadFile")[0].files[0]);
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/upload",
+            data: formData,
+            //processData默认为true,数据将会被转化成字符串的形式被后台接受，这里要设置为false
+            processData: false,
+            //contentType表示发送数据的格式，默认值为application/x-www-form-urlencoded，无法传输复杂数据，传输文件要设置为false
+            contentType: false,
+            success: function (result) {
+                console.log(result);
+                console.log(result.title)
+                alert("上传成功");
+                var img = "<img src=" + result.title + ">";
+                $("#showImg").html(img);
+            },
+
+        });
+    }
+</script>
+</html>
