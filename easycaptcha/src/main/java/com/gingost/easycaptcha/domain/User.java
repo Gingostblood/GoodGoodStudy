@@ -2,6 +2,7 @@ package com.gingost.easycaptcha.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -29,32 +30,37 @@ public class User implements UserDetails {
     private String password;
 
     @ManyToMany
-    @JoinTable(name = "user_role",joinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id")},inverseJoinColumns = {@JoinColumn(name = "role_id",referencedColumnName = "id")})
+    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Set<Role> roles;
 
 
     @Override
+
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return (Set)roles;
+        return roles;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

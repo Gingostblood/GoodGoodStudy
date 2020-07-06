@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,7 +13,7 @@
 <img id="yzm" width="130px" height="48px"/><br>
 <input type="button" id="ok" value="测试">
 </body>
-<script src="JQ/jquery-3.4.1.min.js"></script>
+<script th:src="@{/JQ/jquery-3.4.1.min.js}"></script>
 <script type="text/javascript">
     $.get("/captcha", function (res) {
         console.log(res)
@@ -25,6 +25,7 @@
         $.ajax({
             url:'/login',
             async:false,
+            type:"post",
             data:{
                 username:$("#username").val(),
                 password:$("#password").val(),
@@ -33,7 +34,8 @@
             },
             success:function (res) {
                 if(res.code==0){
-                    alert("OK")
+                    alert("OK");
+                    console.log(res.data)
                 }else{
                     alert(res.msg);
                 }

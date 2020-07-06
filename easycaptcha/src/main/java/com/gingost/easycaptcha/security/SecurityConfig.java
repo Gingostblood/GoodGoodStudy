@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.jwtAccessDeniedHandler = jwtAccessDeniedHandler;
         this.applicationContext = applicationContext;
     }
+    //去除ROLE_前缀
     @Bean
     GrantedAuthorityDefaults grantedAuthorityDefaults() {
         return new GrantedAuthorityDefaults("");
@@ -92,6 +93,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.html",
                         "/**/*.css",
                         "/**/*.js",
+                        "/JQ/**",
                         "/webSocket/**"
                 ).permitAll()
                 // swagger 文档

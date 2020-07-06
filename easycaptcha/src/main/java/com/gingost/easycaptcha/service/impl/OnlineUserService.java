@@ -28,7 +28,7 @@ public class OnlineUserService {
     /**
      * 保存在线用户信息
      */
-    public void save(User user, String token, HttpServletRequest request){
+    public void save(User user, String token){
         redisUtils.set(properties.getOnlineKey() + token, user, properties.getTokenValidityInSeconds()/1000);
     }
 

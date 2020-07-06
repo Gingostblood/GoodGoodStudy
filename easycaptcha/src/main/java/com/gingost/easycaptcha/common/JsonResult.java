@@ -23,4 +23,11 @@ public class JsonResult {
     public JsonResult(String msg){
         this.msg=msg;
     }
+    public JsonResult(Object data){
+        this.data=data;
+    }
+    public JsonResult(Object data,String msg){
+        this.data=data;
+        this.msg=msg;
+    }
 }
