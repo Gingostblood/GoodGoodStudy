@@ -45,6 +45,10 @@ jwt:
   # 验证码
   code-key: code-key
 
+keys:
+  one-key: key1
+  two-key: key2
+
 file:
   path: /admin/file/
   avatar: /admin/avatar/
