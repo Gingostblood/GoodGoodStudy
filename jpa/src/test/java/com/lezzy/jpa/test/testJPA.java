@@ -116,14 +116,14 @@ public class testJPA {
                     //如果没有该条件，就是查找全部然后排序分页
                     predicate.getExpressions().add(criteriaBuilder.ge(root.get("age"), user.getAge()));
                 }
-                if(user.getName()!=null && !user.getName().equals("")){
-                    predicate.getExpressions().add(criteriaBuilder.like(root.get("name"),"%"+user.getName()+"%"));
+                if (user.getName() != null && !user.getName().equals("")) {
+                    predicate.getExpressions().add(criteriaBuilder.like(root.get("name"), "%" + user.getName() + "%"));
                 }
                 return predicate;
             }
         }, pageable);
-        System.out.println("记录数:"+users.getTotalElements());
-        System.out.println("总页数:"+users.getTotalPages());
+        System.out.println("记录数:" + users.getTotalElements());
+        System.out.println("总页数:" + users.getTotalPages());
         System.out.println(users.getContent());
     }
 
@@ -191,27 +191,29 @@ public class testJPA {
     }
 
     @Test
-    public void testMpdiFying(){
+    public void testMpdiFying() {
         int row = userJPA.updateAgeById("为什么", 11L);
-        System.out.println("受影响的行数:"+row+"行");
+        System.out.println("受影响的行数:" + row + "行");
         User user = userJPA.findAgeById(11L);
         System.out.println(user);
     }
+
     @Test
-    public void testMpdiFying2(){
-        int row=userJPA.deleteUserByName("为什么");
+    public void testMpdiFying2() {
+        int row = userJPA.deleteUserByName("为什么");
         System.out.println(row);
     }
 
     @Test
-    public void testDelete(){
+    public void testDelete() {
         userJPA.deleteById(19L);
     }
 
     @Test
-    public void testOptional(){
-        Optional<User> byId = userJPA.findById(12L);;
-        User user=byId.isPresent()?byId.get():null;
+    public void testOptional() {
+        Optional<User> byId = userJPA.findById(12L);
+        ;
+        User user = byId.isPresent() ? byId.get() : null;
         User userById = userJPA.findUserById(12L);
         User ageById = userJPA.findAgeById(12L);
         System.out.println(ageById);
@@ -222,8 +224,8 @@ public class testJPA {
     @Test
     @Transactional
     @Rollback(false)
-    public void testDeletes(){
-        List<Long> ids=new ArrayList<>();
+    public void testDeletes() {
+        List<Long> ids = new ArrayList<>();
         ids.add(12L);
         ids.add(13L);
         ids.add(14L);

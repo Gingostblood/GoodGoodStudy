@@ -35,7 +35,7 @@ public class BroadcastAspect {
     }
 
     @Around("pointcut()")
-    public void start(ProceedingJoinPoint proceedingJoinPoint){
+    public void start(ProceedingJoinPoint proceedingJoinPoint) {
         System.out.println("======开始织入");
         MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
         Broadcast broadcast = signature.getMethod().getDeclaredAnnotation(Broadcast.class);
@@ -45,20 +45,18 @@ public class BroadcastAspect {
 
     }
 
-    private void doHanderMain(ProceedingJoinPoint proceedingJoinPoint, Broadcast broadcast){
-        if (broadcast.value().equals("one")) {
-            redisUtils.set(onekey, UUID.randomUUID().toString().toLowerCase(), 60, TimeUnit.SECONDS);
-            System.out.println("======onekey-redis");
-        } else if (broadcast.value().equals("two")) {
-            redisUtils.set(towkey,"lizhenyuwoaini",60,TimeUnit.SECONDS);
-            System.out.println("======twokey-redis");
-        }else {
-            System.out.println("=========输入参数不对嗷");
-        }
-        try {
-            proceedingJoinPoint.proceed();
-        } catch (Throwable throwable) {
-            System.out.println("启动自毁程序");
+    private void doHanderMain(ProceedingJoinPoint proceedingJoinPoint, Broadcast broadcast) {
+        switch (broadcast.value()) {
+            case "one":
+                redisUtils.set(onekey, UUID.randomUUID().toString().toLowerCase(), 60, TimeUnit.SECONDS);
+                System.out.println("======onekey-redis");
+                break;
+            case "two":
+                redisUtils.set(towkey, "lizhenyuwoaini", 60, TimeUnit.SECONDS);
+                System.out.println("======twokey-redis");
+            default:
+                System.out.println("=========输入参数不对嗷");
+                break;
         }
     }
 }

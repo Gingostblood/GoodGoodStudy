@@ -22,10 +22,12 @@ import java.io.IOException;
 @AllArgsConstructor
 public class PageController {
     private ImageService imageService;
+
     @RequestMapping("img")
     public String goPage() {
         return "img";
     }
+
     @RequestMapping("upload")
     @ResponseBody
     public Image uoload(MultipartFile uploadFile) throws IOException {

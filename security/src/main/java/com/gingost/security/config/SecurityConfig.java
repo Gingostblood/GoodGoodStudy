@@ -16,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         String pwd = "123456";
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String newPwd=bCryptPasswordEncoder.encode(pwd);
+        String newPwd = bCryptPasswordEncoder.encode(pwd);
         System.out.println("==============================" + newPwd);
         auth.inMemoryAuthentication().withUser("lizhenyu").roles("user").password("{noop}123").
                 and().withUser("fku").roles("user").password(newPwd);

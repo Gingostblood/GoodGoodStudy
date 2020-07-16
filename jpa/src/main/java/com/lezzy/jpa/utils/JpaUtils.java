@@ -6,10 +6,12 @@ import javax.persistence.Persistence;
 
 public class JpaUtils {
     private static EntityManagerFactory entityManagerFactory;
+
     static {
-        entityManagerFactory= Persistence.createEntityManagerFactory("jpa-1");
+        entityManagerFactory = Persistence.createEntityManagerFactory("jpa-1");
     }
-    public static EntityManager getEntityManager(){
+
+    public static EntityManager getEntityManager() {
         return entityManagerFactory.createEntityManager();
     }
 }

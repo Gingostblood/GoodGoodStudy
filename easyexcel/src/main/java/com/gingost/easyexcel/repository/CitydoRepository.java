@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @author:lezzy
  * @Date:2020/4/10 14:52
  */
-public interface CitydoRepository extends JpaRepository<Citydo,Integer>, JpaSpecificationExecutor<Citydo> {
+public interface CitydoRepository extends JpaRepository<Citydo, Integer>, JpaSpecificationExecutor<Citydo> {
 }

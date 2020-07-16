@@ -21,7 +21,7 @@ import java.util.Date;
 @Table(name = "test_car_excel")
 @Getter
 @Setter
-@EqualsAndHashCode(exclude="id")
+@EqualsAndHashCode(exclude = "id")
 public class DemoExcel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,23 +29,21 @@ public class DemoExcel {
     private Integer id;
 
 
-
     @Column(name = "line1")
-    @ExcelProperty(value = "标题",index = 0)
+    @ExcelProperty(value = "标题", index = 0)
     private String title;
 
     @Column(name = "line2")
-    @ExcelProperty(value = {"时间","test1"},index = 1)
+    @ExcelProperty(value = {"时间", "test1"}, index = 1)
     private String test1;
 
     @Column(name = "line3")
-    @ExcelProperty(value = {"时间","test2"},index = 2)
+    @ExcelProperty(value = {"时间", "test2"}, index = 2)
     private String test2;
 
-    @ExcelProperty(value = "数据",index = 3)
+    @ExcelProperty(value = "数据", index = 3)
     @Column(name = "line4")
     private String data;
-
 
 
 }

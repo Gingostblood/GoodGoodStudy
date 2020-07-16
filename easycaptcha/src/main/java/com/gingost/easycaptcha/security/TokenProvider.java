@@ -50,12 +50,12 @@ public class TokenProvider implements InitializingBean {
 
         long now = (new Date()).getTime();
         Date validity = new Date(now + propertiesConfig.getTokenValidityInSeconds());
-        com.gingost.easycaptcha.domain.User user=(com.gingost.easycaptcha.domain.User)authentication.getPrincipal();
+        com.gingost.easycaptcha.domain.User user = (com.gingost.easycaptcha.domain.User) authentication.getPrincipal();
         return Jwts.builder()
                 .setSubject(authentication.getName())
                 .claim(AUTHORITIES_KEY, authorities)
-                .claim("uid",user.getId())
-                .claim("uname",user.getUsername())
+                .claim("uid", user.getId())
+                .claim("uname", user.getUsername())
                 .signWith(key, SignatureAlgorithm.HS512)
                 .setExpiration(validity)
                 .compact();

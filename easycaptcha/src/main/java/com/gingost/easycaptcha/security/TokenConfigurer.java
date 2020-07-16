@@ -12,7 +12,7 @@ public class TokenConfigurer extends SecurityConfigurerAdapter<DefaultSecurityFi
 
     private final TokenProvider tokenProvider;
 
-    public TokenConfigurer(TokenProvider tokenProvider){
+    public TokenConfigurer(TokenProvider tokenProvider) {
         this.tokenProvider = tokenProvider;
     }
 

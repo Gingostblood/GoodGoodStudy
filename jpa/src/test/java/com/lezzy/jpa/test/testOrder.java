@@ -15,8 +15,9 @@ import java.util.UUID;
 public class testOrder {
     @Autowired
     private OrderJPA orderJPA;
+
     @Test
-    public void testOneToOne(){
+    public void testOneToOne() {
         /*OrderInfo orderInfo=new OrderInfo();
         orderInfo.setOrderMsg("iphone 11 pro max").setUuid(UUID.randomUUID().toString());
         Order order=new Order();

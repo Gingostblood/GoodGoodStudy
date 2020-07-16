@@ -23,6 +23,6 @@ public class Author {
     @Column(name = "author_name")
     private String authorName;
 
-    @OneToMany(mappedBy = "author",cascade = CascadeType.REMOVE)
-    private Set<Book> books=new HashSet<>();
+    @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
+    private Set<Book> books = new HashSet<>();
 }

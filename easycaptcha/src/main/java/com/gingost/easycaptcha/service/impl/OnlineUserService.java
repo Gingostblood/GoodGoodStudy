@@ -1,4 +1,5 @@
 package com.gingost.easycaptcha.service.impl;
+
 import antlr.StringUtils;
 import com.gingost.easycaptcha.config.PropertiesConfig;
 import com.gingost.easycaptcha.domain.User;
@@ -28,8 +29,8 @@ public class OnlineUserService {
     /**
      * 保存在线用户信息
      */
-    public void save(User user, String token){
-        redisUtils.set(properties.getOnlineKey() + token, user, properties.getTokenValidityInSeconds()/1000);
+    public void save(User user, String token) {
+        redisUtils.set(properties.getOnlineKey() + token, user, properties.getTokenValidityInSeconds() / 1000);
     }
 
     public User getOne(String s) {

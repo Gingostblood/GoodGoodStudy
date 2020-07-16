@@ -4,5 +4,5 @@ import com.lezzy.jpa.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface RoleJPA extends JpaRepository<Role,Integer>, JpaSpecificationExecutor<Role> {
+public interface RoleJPA extends JpaRepository<Role, Integer>, JpaSpecificationExecutor<Role> {
 }

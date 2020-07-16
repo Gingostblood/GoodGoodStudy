@@ -28,7 +28,7 @@ public class DemoListener extends AnalysisEventListener<DemoExcel> {
     private ExcelRepository excelRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(DemoListener.class);
     private static final int BATCH_COUNT = 300;
-    int i=0;
+    int i = 0;
     List<DemoExcel> list = new ArrayList<>();
 
     public DemoListener(ExcelRepository excelRepository) {
@@ -38,13 +38,13 @@ public class DemoListener extends AnalysisEventListener<DemoExcel> {
     @Override
     public void invoke(DemoExcel demoExcel, AnalysisContext analysisContext) {
         i++;
-        if(i<=2){
+        if (i <= 2) {
             return;
         }
-        if(demoExcel.getTitle() == null){
+        if (demoExcel.getTitle() == null) {
             return;
         }
-        System.out.println("=========================="+demoExcel);
+        System.out.println("==========================" + demoExcel);
         LOGGER.info("解析到的数据{}", JSON.toJSONString(demoExcel));
         list.add(demoExcel);
         if (list.size() >= BATCH_COUNT) {

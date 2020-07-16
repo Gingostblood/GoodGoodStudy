@@ -1,0 +1,10 @@
+##jwt����
+audience:
+  # �������JWT�Ľ��ն���,����audience
+  clientId: 098f6bcd4621d373cade4e832627b4f6
+  # ��Կ, ����Base64����, �������滻
+  base64Secret: MDk4ZjZiY2Q0NjIxZDM3M2NhZGU0ZTgzMjYyN2I0ZjY=
+  # JWT��ǩ�����壬����issuer
+  name: restapiuser
+  # ����ʱ�䣬ʱ���
+  expiresSecond: 172800

@@ -1,9 +1,9 @@
 package com.gingost.nginx_img.domain;
 
-        import lombok.Data;
-        import lombok.experimental.Accessors;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
-        import javax.persistence.*;
+import javax.persistence.*;
 
 /**
  * @author:lezzy

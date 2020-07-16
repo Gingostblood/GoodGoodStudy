@@ -17,13 +17,13 @@ public class SimpleWrite {
     @ExcelIgnore
     private Integer id;
 
-    @ExcelProperty({"主标题","学生姓名"})
+    @ExcelProperty({"主标题", "学生姓名"})
     private String name;
 
-    @ExcelProperty({"主标题","期末成绩"})
+    @ExcelProperty({"主标题", "期末成绩"})
     private Double data;
 
-    @ExcelProperty({"主标题","统计时间"})
+    @ExcelProperty({"主标题", "统计时间"})
     private Date time;
 
     /*public SimpleWrite(DemoExcel demoExcel){

@@ -32,10 +32,10 @@ public interface UserJPA extends JpaRepository<User, Long>, JpaSpecificationExec
 
     User findUserByName(String name);
 
-    @Query(value = "select * from  user",nativeQuery = true)
+    @Query(value = "select * from  user", nativeQuery = true)
     List<User> findAllUsers();
 
-    @Query(value = "select u from User u where u.age=?1",nativeQuery = false)
+    @Query(value = "select u from User u where u.age=?1", nativeQuery = false)
     List<User> findUsersByAge(Integer age);
 
     User findTopByOrderByAgeDesc();
@@ -48,8 +48,8 @@ public interface UserJPA extends JpaRepository<User, Long>, JpaSpecificationExec
 
     @Modifying
     @Transactional
-    @Query(value = "update User u set u.name=?1 where u.id=?2",nativeQuery = false)
-    int updateAgeById(String name,Long id);
+    @Query(value = "update User u set u.name=?1 where u.id=?2", nativeQuery = false)
+    int updateAgeById(String name, Long id);
 
     @Modifying
     @Transactional

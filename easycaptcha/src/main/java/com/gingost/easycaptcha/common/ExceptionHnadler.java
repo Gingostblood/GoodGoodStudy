@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ExceptionHnadler {
     @ExceptionHandler(RuntimeException.class)
-    public JsonResult doHandlerException(RuntimeException e){
+    public JsonResult doHandlerException(RuntimeException e) {
         e.printStackTrace();
         return new JsonResult(e);
     }

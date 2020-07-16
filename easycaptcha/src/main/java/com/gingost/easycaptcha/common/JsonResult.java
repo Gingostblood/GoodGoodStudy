@@ -20,14 +20,17 @@ public class JsonResult {
         this.code = 1;
         this.msg = e.getMessage();
     }
-    public JsonResult(String msg){
-        this.msg=msg;
+
+    public JsonResult(String msg) {
+        this.msg = msg;
     }
-    public JsonResult(Object data){
-        this.data=data;
+
+    public JsonResult(Object data) {
+        this.data = data;
     }
-    public JsonResult(Object data,String msg){
-        this.data=data;
-        this.msg=msg;
+
+    public JsonResult(Object data, String msg) {
+        this.data = data;
+        this.msg = msg;
     }
 }

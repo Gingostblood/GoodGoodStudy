@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author:lezzy
  * @Date:2020/3/30 13:57
  */
-public interface ImgDao extends JpaRepository<Image,Integer> {
+public interface ImgDao extends JpaRepository<Image, Integer> {
 }

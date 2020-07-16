@@ -22,7 +22,7 @@ public class Role {
     @Column(name = "role_name")
     private String roleName;
 
-    @OneToMany(mappedBy = "role",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @ToString.Exclude
-    private Set<UserOfRole> users=new HashSet<>();
+    private Set<UserOfRole> users = new HashSet<>();
 }

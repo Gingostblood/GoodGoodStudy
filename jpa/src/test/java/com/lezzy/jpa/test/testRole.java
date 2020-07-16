@@ -78,7 +78,7 @@ public class testRole {
         Page<Role> rolePage = roleJPA.findAll(new Specification<Role>() {
             @Override
             public Predicate toPredicate(Root<Role> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
-                Predicate predicate=criteriaBuilder.conjunction();
+                Predicate predicate = criteriaBuilder.conjunction();
 
                 return null;
             }

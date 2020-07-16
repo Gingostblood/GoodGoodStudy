@@ -64,7 +64,7 @@ public class CitydoListener extends AnalysisEventListener<Citydo> {
                 break;
             case MERGE:
                 LOGGER.info("这是一个合并的单元格，从第{}行，{}列到第{}行，{}列,内容是:{}",
-                        extra.getFirstRowIndex(),extra.getFirstColumnIndex(),extra.getLastRowIndex(),extra.getLastColumnIndex(),extra.getText());
+                        extra.getFirstRowIndex(), extra.getFirstColumnIndex(), extra.getLastRowIndex(), extra.getLastColumnIndex(), extra.getText());
         }
     }
 }

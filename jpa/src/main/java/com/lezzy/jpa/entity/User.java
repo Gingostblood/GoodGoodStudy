@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @Accessors(chain = true)
 
-@NamedQuery(name = "User.findUserByName",query = "select u from User u where u.name=?1")
+@NamedQuery(name = "User.findUserByName", query = "select u from User u where u.name=?1")
 public class User implements Serializable {
     @Id
     //strategy = GenerationType.IDENTITY表示主键自增长，

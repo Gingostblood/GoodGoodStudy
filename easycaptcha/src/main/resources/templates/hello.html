@@ -23,20 +23,20 @@
 
     $("#ok").click(function () {
         $.ajax({
-            url:'/login',
-            async:false,
-            type:"post",
-            data:{
-                username:$("#username").val(),
-                password:$("#password").val(),
+            url: '/login',
+            async: false,
+            type: "post",
+            data: {
+                username: $("#username").val(),
+                password: $("#password").val(),
                 uuid: $("#uuid").val(),
                 code: $("#in").val(),
             },
-            success:function (res) {
-                if(res.code==0){
+            success: function (res) {
+                if (res.code == 0) {
                     alert("OK");
                     console.log(res.data)
-                }else{
+                } else {
                     alert(res.msg);
                 }
             }

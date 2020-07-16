@@ -42,8 +42,8 @@ public class ConfigurerAdapter implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        String avatarUtl = "file:" + avatar.replace("\\","/");
-        String pathUtl = "file:" + path.replace("\\","/");
+        String avatarUtl = "file:" + avatar.replace("\\", "/");
+        String pathUtl = "file:" + path.replace("\\", "/");
         registry.addResourceHandler("/avatar/**").addResourceLocations(avatarUtl).setCachePeriod(0);
         registry.addResourceHandler("/file/**").addResourceLocations(pathUtl).setCachePeriod(0);
         registry.addResourceHandler("/**").addResourceLocations("classpath:/META-INF/resources/").setCachePeriod(0);

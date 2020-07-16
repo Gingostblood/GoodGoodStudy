@@ -10,14 +10,14 @@ import java.util.Date;
 @RequestMapping("/user")
 public class UserController {
     @RequestMapping("/test")
-    public String fristTest(){
+    public String fristTest() {
         return "hello";
     }
 
     @RequestMapping("/date")
-    public DateVo testJson(){
-        DateVo dateVo=new DateVo();
+    public DateVo testJson() {
+        DateVo dateVo = new DateVo();
         dateVo.setDate(new Date());
-        return  dateVo;
+        return dateVo;
     }
 }

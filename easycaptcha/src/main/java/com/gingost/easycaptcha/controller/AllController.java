@@ -88,7 +88,7 @@ public class AllController {
         Map<String, Object> map = new HashMap<String, Object>(2) {{
             put("uuid", uuid);
             //put("img", captcha.toBase64());
-            put("res",result);
+            put("res", result);
         }};
         return new ResponseEntity(map, HttpStatus.OK);
     }

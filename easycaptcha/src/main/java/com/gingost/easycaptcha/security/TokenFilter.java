@@ -24,43 +24,43 @@ import java.io.IOException;
 @Slf4j
 public class TokenFilter extends GenericFilterBean {
 
-   private final TokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
 
-   TokenFilter(TokenProvider tokenProvider) {
-      this.tokenProvider = tokenProvider;
-   }
+    TokenFilter(TokenProvider tokenProvider) {
+        this.tokenProvider = tokenProvider;
+    }
 
-   @Override
-   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-      throws IOException, ServletException {
-      HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-      String token = resolveToken(httpServletRequest);
-      String requestRri = httpServletRequest.getRequestURI();
-      // 验证 token 是否存在
-      User onlineUser = null;
-      try {
-         PropertiesConfig properties = SpringContextHolder.getBean(PropertiesConfig.class);
-         OnlineUserService onlineUserService = SpringContextHolder.getBean(OnlineUserService.class);
-         onlineUser = onlineUserService.getOne(properties.getOnlineKey() + token);
-      } catch (ExpiredJwtException e) {
-         log.error(e.getMessage());
-      }
-      if (onlineUser != null && StringUtils.hasText(token) && tokenProvider.validateToken(token)) {
-         Authentication authentication = tokenProvider.getAuthentication(token);
-         SecurityContextHolder.getContext().setAuthentication(authentication);
-         log.debug("set Authentication to security context for '{}', uri: {}", authentication.getName(), requestRri);
-      } else {
-         log.debug("no valid JWT token found, uri: {}", requestRri);
-      }
-      filterChain.doFilter(servletRequest, servletResponse);
-   }
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
+            throws IOException, ServletException {
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        String token = resolveToken(httpServletRequest);
+        String requestRri = httpServletRequest.getRequestURI();
+        // 验证 token 是否存在
+        User onlineUser = null;
+        try {
+            PropertiesConfig properties = SpringContextHolder.getBean(PropertiesConfig.class);
+            OnlineUserService onlineUserService = SpringContextHolder.getBean(OnlineUserService.class);
+            onlineUser = onlineUserService.getOne(properties.getOnlineKey() + token);
+        } catch (ExpiredJwtException e) {
+            log.error(e.getMessage());
+        }
+        if (onlineUser != null && StringUtils.hasText(token) && tokenProvider.validateToken(token)) {
+            Authentication authentication = tokenProvider.getAuthentication(token);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            log.debug("set Authentication to security context for '{}', uri: {}", authentication.getName(), requestRri);
+        } else {
+            log.debug("no valid JWT token found, uri: {}", requestRri);
+        }
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
 
-   private String resolveToken(HttpServletRequest request) {
-      PropertiesConfig properties = SpringContextHolder.getBean(PropertiesConfig.class);
-      String bearerToken = request.getHeader(properties.getHeader());
-      if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(properties.getTokenStartWith())) {
-         return bearerToken.substring(7);
-      }
-      return null;
-   }
+    private String resolveToken(HttpServletRequest request) {
+        PropertiesConfig properties = SpringContextHolder.getBean(PropertiesConfig.class);
+        String bearerToken = request.getHeader(properties.getHeader());
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(properties.getTokenStartWith())) {
+            return bearerToken.substring(7);
+        }
+        return null;
+    }
 }

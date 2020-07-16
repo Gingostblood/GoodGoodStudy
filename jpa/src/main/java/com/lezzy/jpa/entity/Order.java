@@ -25,8 +25,8 @@ public class Order {
     private OrderInfo orderInfo;
 
 
-    @Column(name ="start_time" )
+    @Column(name = "start_time")
     private Date startTime;
-    @Column(name ="end_time" )
+    @Column(name = "end_time")
     private Date endTime;
 }

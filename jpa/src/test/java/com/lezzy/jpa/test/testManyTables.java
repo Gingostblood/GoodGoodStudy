@@ -19,12 +19,13 @@ public class testManyTables {
     private AddressJPA addressJPA;
 
     @Test
-    public void testAddressInfo(){
+    public void testAddressInfo() {
         List<AddressInfo> all = addressJPA.findAll();
         System.out.println(all);
     }
+
     @Test
-    public void testTablesQuery(){
+    public void testTablesQuery() {
         List<ViewInfo> viewInfo = userInfoJPA.findViewInfo();
         System.out.println(viewInfo);
     }
